@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Converter</title>
+  <style>
+*{
+margin: 0;
+padding: 0;
+font-family: 'Poppins',sans-serif;
+box-sizing: border-box;
+}
+   body {
+background:linear-gradient(135deg, #153677, #4e085f);
+}
+    .container
+{
+color: #002765;
+background-color:white;
+margin:50px 350px;
+padding:10px;
+border-radius:10px;
+}
+
+    h1 {
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 5px;
+      border: 2px solid #ccc;
+      border-radius: 30px;
+    }
+
+    
+.btn {
+width:80px;
+height:30px;
+text-align:center;
+color:white;
+font-weight:bold;
+align-items: center;
+justify-content: space-between;
+background: #ff5945;
+border-style:double;
+border-radius: 30px;
+margin:10px 200px;
+}
+.cen {
+text-align:center;
+}
+    .result {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Temperature Converter<img src="C:\Users\User\Desktop\html project\\tempcon.jpg" width="40px" height="40px"/></h1>
+    <div class="form-group">
+      <label for="celsius">Celsius:</label>
+      <input type="number" id="celsius" placeholder="Enter temperature in Celsius">
+    </div>
+    <div class="form-group">
+      <label for="fahrenheit">Fahrenheit:</label>
+      <input type="number" id="fahrenheit" placeholder="Enter temperature in Fahrenheit">
+    </div>
+    <div class="form-group">
+      <label for="kelvin">Kelvin:</label>
+      <input type="number" id="kelvin" placeholder="Enter temperature in Kelvin">
+    </div>
+    <button class="btn" onclick="convert()">Convert</button><button class="btn" onclick="clearFields()">Clear</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function convert() {
+      var celsius = document.getElementById("celsius").value;
+      var fahrenheit = document.getElementById("fahrenheit").value;
+      var kelvin = document.getElementById("kelvin").value;
+
+      if (celsius !== "") {
+        var convertedFahrenheit = (celsius * 9/5) + 32;
+        var convertedKelvin = parseFloat(celsius) + 273.15;
+        document.getElementById("fahrenheit").value = convertedFahrenheit;
+        document.getElementById("kelvin").value = convertedKelvin;
+        document.getElementById("result").innerHTML = celsius + "°C is equal to " + convertedFahrenheit + "°F and " + convertedKelvin + " K";
+      } else if (fahrenheit !== "") {
+        var convertedCelsius = (fahrenheit - 32) * 5/9;
+        var convertedKelvin = (fahrenheit - 32) * 5/9 + 273.15;
+        document.getElementById("celsius").value = convertedCelsius;
+        document.getElementById("kelvin").value = convertedKelvin;
+        document.getElementById("result").innerHTML = fahrenheit + "°F is equal to " + convertedCelsius + "°C and " + convertedKelvin + " K";
+      } else if (kelvin !== "") {
+        var convertedCelsius = kelvin - 273.15;
+        var convertedFahrenheit = (kelvin - 273.15) * 9/5 + 32;
+        document.getElementById("celsius").value = convertedCelsius;
+        document.getElementById("fahrenheit").value = convertedFahrenheit;
+        document.getElementById("result").innerHTML = kelvin + " K is equal to " + convertedCelsius + "°C and " + convertedFahrenheit + "°F";
+      } else {
+        document.getElementById("result").innerHTML = "Please enter a temperature.";
+      }
+    }
+
+    function clearFields() {
+      document.getElementById("celsius").value = "";
+      document.getElementById("fahrenheit").value = "";
+      document.getElementById("kelvin").value = "";
+      document.getElementById("result").innerHTML = "";
+    }
+  </script>
+</body>
+</html>
